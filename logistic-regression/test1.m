@@ -95,3 +95,18 @@ hold off;
 
 fprintf('\nPress enter to continue.\n');
 pause;
+
+
+%% ============== Prediction and Accuracies ==============
+
+prob = sigmoid([1 45 85] * theta);
+fprintf(['For a student with scores 45 and 85, we predict an admission ' ...
+         'probability of %f\n'], prob);
+fprintf('Expected value: 0.775 +/- 0.002\n\n');
+
+% Compute accuracy on our training set
+p = predict(theta, X);
+
+fprintf('Train Accuracy: %f\n', mean(double(p == y)) * 100);
+fprintf('Expected accuracy (approx): 89.0\n');
+fprintf('\n');

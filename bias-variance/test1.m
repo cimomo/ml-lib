@@ -42,3 +42,21 @@ fprintf(['Gradient at theta = [1 ; 1]:  [%f; %f] '...
 
 fprintf('Press enter to continue.\n');
 pause;
+
+
+%% =========== Train Linear Regression =============
+
+%  Train linear regression with lambda = 0
+lambda = 0;
+[theta] = trainLinearReg([ones(m, 1) X], y, lambda);
+
+%  Plot fit over the data
+plot(X, y, 'rx', 'MarkerSize', 10, 'LineWidth', 1.5);
+xlabel('Change in water level (x)');
+ylabel('Water flowing out of the dam (y)');
+hold on;
+plot(X, [ones(m, 1) X]*theta, '--', 'LineWidth', 2)
+hold off;
+
+fprintf('Press enter to continue.\n');
+pause;

@@ -19,3 +19,26 @@ ylabel('Water flowing out of the dam (y)');
 
 fprintf('Press enter to continue.\n');
 pause;
+
+%% =========== Regularized Linear Regression Cost =============
+
+theta = [1 ; 1];
+J = linearRegCostFunction([ones(m, 1) X], y, theta, 1);
+
+fprintf(['Cost at theta = [1 ; 1]: %f '...
+         '\n(this value should be about 303.993192)\n'], J);
+
+fprintf('Press enter to continue.\n');
+pause;
+
+%% =========== Regularized Linear Regression Gradient =============
+
+theta = [1 ; 1];
+[J, grad] = linearRegCostFunction([ones(m, 1) X], y, theta, 1);
+
+fprintf(['Gradient at theta = [1 ; 1]:  [%f; %f] '...
+         '\n(this value should be about [-15.303016; 598.250744])\n'], ...
+         grad(1), grad(2));
+
+fprintf('Press enter to continue.\n');
+pause;

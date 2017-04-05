@@ -56,7 +56,7 @@ plotData(X, y);
 fprintf('Press enter to continue.\n');
 pause;
 
-%% ========== Training SVM with RBF Kernel (Dataset 2) ==========
+%% ========== Applying SVM with Gaussian Kernel ==========
 
 fprintf('\nTraining SVM with RBF Kernel (this may take 1 to 2 minutes) ...\n');
 
@@ -72,5 +72,21 @@ C = 1; sigma = 0.1;
 model= svmTrain(X, y, C, @(x1, x2) gaussianKernel(x1, x2, sigma)); 
 visualizeBoundary(X, y, model);
 
-fprintf('Program paused. Press enter to continue.\n');
+fprintf('Press enter to continue.\n');
+pause;
+
+%% ========== Optimizing C and sigma ==========
+
+% You will have X, y in your environment
+load('data3.mat');
+
+% Try different SVM Parameters here
+[C, sigma] = optimizeParams(X, y, Xval, yval);
+fprintf('C = %f, sigma = %f\n', C, sigma);
+
+% Train the SVM
+model= svmTrain(X, y, C, @(x1, x2) gaussianKernel(x1, x2, sigma));
+visualizeBoundary(X, y, model);
+
+fprintf('Press enter to continue.\n');
 pause;

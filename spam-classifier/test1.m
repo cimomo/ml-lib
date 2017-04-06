@@ -51,3 +51,16 @@ fprintf('Training Accuracy: %f\n', mean(double(p == y)) * 100);
 
 fprintf('Press enter to continue.\n');
 pause;
+
+%% =================== Test Spam Classification ================
+
+% Load the test dataset
+% You will have Xtest, ytest in your environment
+load('spamTest.mat');
+
+fprintf('\nEvaluating the trained Linear SVM on a test set ...\n')
+
+p = svmPredict(model, Xtest);
+
+fprintf('Test Accuracy: %f\n', mean(double(p == ytest)) * 100);
+pause;

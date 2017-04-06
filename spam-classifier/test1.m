@@ -63,4 +63,22 @@ fprintf('\nEvaluating the trained Linear SVM on a test set ...\n')
 p = svmPredict(model, Xtest);
 
 fprintf('Test Accuracy: %f\n', mean(double(p == ytest)) * 100);
+
+fprintf('Press enter to continue.\n');
+pause;
+
+
+%% ================= Top Predictors of Spam ====================
+
+% Sort the weights and obtin the vocabulary list
+[weight, idx] = sort(model.w, 'descend');
+vocabList = getVocabList();
+
+fprintf('\nTop predictors of spam: \n');
+for i = 1:15
+    fprintf(' %-15s (%f) \n', vocabList{idx(i)}, weight(i));
+end
+
+fprintf('\n\n');
+fprintf('Press enter to continue.\n');
 pause;

@@ -101,3 +101,16 @@ displayData(U(:, 1:36)');
 
 fprintf('Press enter to continue.\n');
 pause;
+
+%% ============= Dimension Reduction for Faces =================
+
+fprintf('\nDimension reduction for face dataset.\n\n');
+
+K = 100;
+Z = projectData(X_norm, U, K);
+
+fprintf('The projected data Z has a size of: ')
+fprintf('%d ', size(Z));
+
+fprintf('\n\nPress enter to continue.\n');
+pause;

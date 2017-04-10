@@ -114,3 +114,25 @@ fprintf('%d ', size(Z));
 
 fprintf('\n\nPress enter to continue.\n');
 pause;
+
+%% ==== Visualization of Faces after PCA Dimension Reduction ====
+
+fprintf('\nVisualizing the projected (reduced dimension) faces.\n\n');
+
+K = 100;
+X_rec  = recoverData(Z, U, K);
+
+% Display normalized data
+subplot(1, 2, 1);
+displayData(X_norm(1:100,:));
+title('Original faces');
+axis square;
+
+% Display reconstructed data from only k eigenfaces
+subplot(1, 2, 2);
+displayData(X_rec(1:100,:));
+title('Recovered faces');
+axis square;
+
+fprintf('Press enter to continue.\n');
+pause;

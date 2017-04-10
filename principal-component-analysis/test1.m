@@ -70,3 +70,16 @@ hold off
 
 fprintf('Press enter to continue.\n');
 pause;
+
+%% =============== Loading and Visualizing Face Data =============
+
+fprintf('\nLoading face dataset.\n\n');
+
+%  Load Face dataset
+load ('faces.mat')
+
+%  Display the first 100 faces in the dataset
+displayData(X(1:100, :));
+
+fprintf('Press enter to continue.\n');
+pause;

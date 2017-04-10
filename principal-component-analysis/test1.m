@@ -83,3 +83,21 @@ displayData(X(1:100, :));
 
 fprintf('Press enter to continue.\n');
 pause;
+
+%% =========== PCA on Face Data: Eigenfaces  ===================
+
+fprintf(['\nRunning PCA on face dataset.\n' ...
+         '(this might take a minute or two ...)\n\n']);
+
+%  Before running PCA, it is important to first normalize X by subtracting 
+%  the mean value from each feature
+[X_norm, mu, sigma] = normalizeFeatures(X);
+
+%  Run PCA
+[U, S] = pca(X_norm);
+
+%  Visualize the top 36 eigenvectors found
+displayData(U(:, 1:36)');
+
+fprintf('Press enter to continue.\n');
+pause;

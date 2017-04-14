@@ -17,3 +17,23 @@ ylabel('Throughput (mb/s)');
 
 fprintf('Press enter to continue.\n');
 pause
+
+
+%% ================== Estimate the dataset statistics ===================
+
+fprintf('Visualizing Gaussian fit.\n\n');
+
+%  Estimate my and sigma2
+[mu sigma2] = estimateGaussian(X);
+
+%  Returns the density of the multivariate normal at each data point (row) 
+%  of X
+p = computeGaussian(X, mu, sigma2);
+
+%  Visualize the fit
+visualizeFit(X,  mu, sigma2);
+xlabel('Latency (ms)');
+ylabel('Throughput (mb/s)');
+
+fprintf('Press enter to continue.\n');
+pause;

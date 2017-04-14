@@ -37,3 +37,25 @@ ylabel('Throughput (mb/s)');
 
 fprintf('Press enter to continue.\n');
 pause;
+
+%% ================== Find Outliers ===================
+
+
+pval = computeGaussian(Xval, mu, sigma2);
+
+[epsilon F1] = selectThreshold(yval, pval);
+fprintf('Best epsilon found using cross-validation: %e\n', epsilon);
+fprintf('Best F1 on Cross Validation Set:  %f\n', F1);
+fprintf('   (you should see a value epsilon of about 8.99e-05)\n');
+fprintf('   (you should see a Best F1 value of  0.875000)\n\n');
+
+%  Find the outliers in the training set and plot the
+outliers = find(p < epsilon);
+
+%  Draw a red circle around those outliers
+hold on
+plot(X(outliers, 1), X(outliers, 2), 'ro', 'LineWidth', 2, 'MarkerSize', 10);
+hold off
+
+fprintf('Press enter to continue.\n');
+pause;

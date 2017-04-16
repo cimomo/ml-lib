@@ -47,3 +47,38 @@ fprintf(['Cost at loaded parameters: %f '...
 
 fprintf('\nPress enter to continue.\n');
 pause;
+
+
+%% ============== Collaborative Filtering Gradient ==============
+
+fprintf('\nChecking Gradients (without regularization) ... \n');
+
+%  Check gradients by running checkNNGradients
+checkCostFunction;
+
+fprintf('\nPress enter to continue.\n');
+pause;
+
+
+%% ========= Collaborative Filtering Cost Regularization ========
+
+%  Evaluate cost function
+J = cofiCostFunc([X(:) ; Theta(:)], Y, R, num_users, num_movies, ...
+               num_features, 1.5);
+           
+fprintf(['Cost at loaded parameters (lambda = 1.5): %f '...
+         '\n(this value should be about 31.34)\n'], J);
+
+fprintf('\nPress enter to continue.\n');
+pause;
+
+
+%% ======= Collaborative Filtering Gradient Regularization ======
+
+fprintf('\nChecking Gradients (with regularization) ... \n');
+
+%  Check gradients by running checkNNGradients
+checkCostFunction(1.5);
+
+fprintf('\nPress enter to continue.\n');
+pause;
